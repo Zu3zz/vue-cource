@@ -1,19 +1,24 @@
 <template>
   <div class="container">
-    {{ name }}
+    <p>ZShow:{{content}}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    name: {
-      type: String,
-      default: '3zz'
+    content: {
+      type: [String, Number],
+      default: ''
     }
   },
-  beforeRouteUpdate (to, from, next) {
-    // console.log(to,name, from.name)
+  components: {
+
+  },
+  data () {
+    return {
+
+    }
   }
 }
 </script>

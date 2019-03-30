@@ -9,12 +9,12 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    // HelloWorld
   },
   props: {
     food: {
@@ -32,27 +32,28 @@ export default {
     // const leave = confirm('Do you want to leave')
     // if (leave) next()
     // else next(false)
+    next()
   },
   methods: {
     handleClick (type) {
-    if(type==='back') this.$router.back()
-    // this.$router.go(-1)
-    else if (type==='push'){
-      const name = '3zzz'
-      // this.$router.push('/parent')
-      this.$router.push({
-        path: `/argu/${name}`
-        /*
+      if (type === 'back') this.$router.back()
+      // this.$router.go(-1)
+      else if (type === 'push') {
+        const name = '3zzz'
+        // this.$router.push('/parent')
+        this.$router.push({
+          path: `/argu/${name}`
+          /*
         name: 'argu',
         params: {
           name: '3zz'
         }
         */
-        // query: {
-        //   name: '3zz'
-        // }
-      })
-    } else if (type==='replace'){
+          // query: {
+          //   name: '3zz'
+          // }
+        })
+      } else if (type === 'replace') {
         this.$router.replace({
           name: 'parent'
         })

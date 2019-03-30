@@ -1,7 +1,6 @@
 <template>
-  <div class="container">
-    i am email
-    zthzththth@163.com
+  <div class="email">
+    <button @click="handleClick">press me</button>
   </div>
 </template>
 
@@ -12,12 +11,22 @@ export default {
 
     }
   },
+  methods: {
+    handleClick () {
+      this.$bus.$emit('on-click', 'hello')
+    }
+  },
+  mounted () {
+    console.log(this.$bus)
+  },
   components: {
 
   }
 }
 </script>
 
-<style scoped lang="scss">
-
+<style scoped>
+.email{
+  border: 1px solid green;
+}
 </style>

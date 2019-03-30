@@ -1,7 +1,6 @@
 <template>
-  <div class="container">
-    i am tel
-    138188888888
+  <div class="tel">
+    <p>{{message}}</p>
   </div>
 </template>
 
@@ -9,8 +8,13 @@
 export default {
   data () {
     return {
-
+      message: ''
     }
+  },
+  mounted () {
+    this.$bus.$on('on-click', mes => {
+      console.log('hello')
+    })
   },
   components: {
 
@@ -18,6 +22,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-
+<style scoped>
+.tel{
+  border: 1px solid red;
+}
 </style>
