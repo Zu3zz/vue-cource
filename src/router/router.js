@@ -74,5 +74,13 @@ export default [
   {
     path: '*',
     component: () => import('@/views/error_404.vue')
+  },
+  {
+    path: '/dad',
+    component: () => import('@/components/props/dad.vue')
+  },
+  {
+    path: '/todolist',
+    component: () => import('@/components/todolist/todolist.vue')
   }
 ]
