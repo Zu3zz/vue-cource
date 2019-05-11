@@ -1,5 +1,10 @@
 const state = {
-  userName: '3zz'
+  userName: 'Lison'
+}
+const getters = {
+  firstLetter: (state) => {
+    return state.userName.substr(0, 1)
+  }
 }
 const mutations = {
   SET_USER_NAME (state, params) {
@@ -7,17 +12,21 @@ const mutations = {
   }
 }
 const actions = {
-  //
-}
-const getters = {
-  firstLetter: (state) => {
-    return state.userName.substr(0, 1)
+  updateUserName ({ commit, state, rootState, dispatch }) {
+    // rootState.appName
+    dispatch('xxx', '')
+  },
+  xxx () {
+    //
   }
 }
 
 export default {
-  state,
   getters,
+  state,
   mutations,
-  actions
+  actions,
+  modules: {
+    //
+  }
 }

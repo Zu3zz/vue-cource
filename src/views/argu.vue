@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     {{ name }}
   </div>
 </template>
@@ -9,15 +9,16 @@ export default {
   props: {
     name: {
       type: String,
-      default: '3zz'
+      default: 'lison'
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      console.log(vm)
+    })
+  },
   beforeRouteUpdate (to, from, next) {
-    // console.log(to,name, from.name)
+    console.log(to.name, from.name)
   }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>

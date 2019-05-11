@@ -9,8 +9,8 @@ export default [
       food: route.query.food
     }),
     beforeEnter: (to, from, next) => {
-      // if (from.name === 'about') alert('This is from about')
-      // else alert('This is not from about')
+      // if (from.name === 'about') alert('这是从about来的')
+      // else alert('这不是从about来的')
       next()
     }
   },
@@ -61,11 +61,6 @@ export default [
   {
     path: '/main',
     redirect: to => '/'
-    // redirect: to => {
-    //   return {
-    //     name: 'home'
-    //   }
-    // }
   },
   {
     path: '/store',
@@ -74,13 +69,5 @@ export default [
   {
     path: '*',
     component: () => import('@/views/error_404.vue')
-  },
-  {
-    path: '/dad',
-    component: () => import('@/components/props/dad.vue')
-  },
-  {
-    path: '/todolist',
-    component: () => import('@/components/todolist/todolist.vue')
   }
 ]

@@ -3,7 +3,8 @@ import { getAppName } from '@/api/app'
 const actions = {
   // updateAppName ({ commit }) {
   //   getAppName().then(res => {
-  //     commit('SET_APP_NAME', res.info.appName)
+  //     const { info: { appName } } = res
+  //     commit('SET_APP_NAME', appName)
   //   }).catch(err => {
   //     console.log(err)
   //   })
@@ -17,5 +18,4 @@ const actions = {
     }
   }
 }
-
 export default actions

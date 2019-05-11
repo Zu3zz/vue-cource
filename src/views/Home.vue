@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <b> {{ food }}</b>
+    <b>{{ food }}</b>
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到parent</button>
-    <button @click="handleClick('replace')">跳转到parent</button>
+    <button @click="handleClick('replace')">替换到parent</button>
   </div>
 </template>
 
@@ -23,13 +23,12 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    console.log(to.name)
     next(vm => {
-      console.log(vm)
+      // console.log(vm)
     })
   },
   beforeRouteLeave (to, from, next) {
-    // const leave = confirm('Do you want to leave')
+    // const leave = confirm('您确定要离开吗？')
     // if (leave) next()
     // else next(false)
     next()
@@ -37,21 +36,12 @@ export default {
   methods: {
     handleClick (type) {
       if (type === 'back') this.$router.back()
-      // this.$router.go(-1)
       else if (type === 'push') {
-        const name = '3zzz'
-        // this.$router.push('/parent')
         this.$router.push({
-          path: `/argu/${name}`
-          /*
-        name: 'argu',
-        params: {
-          name: '3zz'
-        }
-        */
-          // query: {
-          //   name: '3zz'
-          // }
+          name: `argu`,
+          params: {
+            name: 'lison'
+          }
         })
       } else if (type === 'replace') {
         this.$router.replace({

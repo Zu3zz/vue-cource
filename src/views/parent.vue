@@ -1,23 +1,12 @@
 <template>
-  <div class="container">
-    i am parent
+  <div>
+    I am parent
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-
-    }
-  },
-  components: {
-
-  }
+  //
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>

@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'home' }">Home</router-link>|
+      <router-link :to="{ name: 'home' }">Home</router-link> |
       <router-link :to="{ name: 'about' }">About</router-link>
     </div>
     <transition-group :name="routerTransition">
-      <router-view key="default" />
-      <router-view key="email" name="email" />
-      <router-view key="tel" name="tel" />
+      <router-view key="default"/>
+      <router-view key="email" name="email"/>
+      <router-view key="tel" name="tel"/>
     </transition-group>
   </div>
 </template>
@@ -20,29 +20,30 @@ export default {
     }
   },
   watch: {
-    $route (to) {
+    '$route' (to) {
       to.query && to.query.transitionName && (this.routerTransition = to.query.transitionName)
     }
   }
 }
 </script>
+
 <style lang="less">
-.router-enter {
+.router-enter{
   opacity: 0;
 }
-.router-enter-active {
+.router-enter-active{
   transition: opacity 1s ease;
 }
-.router-enter-to {
+.router-enter-to{
   opacity: 1;
 }
-.router-leave {
+.router-leave{
   opacity: 1;
 }
-.router-leave-active {
+.router-leave-active{
   transition: opacity 1s ease;
 }
-.router-leave-to {
+.router-leave-to{
   opacity: 0;
 }
 #app {

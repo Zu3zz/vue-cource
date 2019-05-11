@@ -1,84 +1,108 @@
 <template>
-  <div class="container">
-    <z-input @input="handleInput" />
-    <!-- <z-show :content="inputValue"/> -->
-    <p>appName: {{appName}}, userName: {{userName}}</p>
-    <p>{{inputValue}} -> lastLetter is {{ inputValueLastLetter }} firstLetter is {{ firstLetter }}</p>
+  <div>
+    <a-input v-model="stateValue"/>
+    <p>{{ stateValue }} -> lastLetter is {{ inputValueLastLetter }}</p>
+    <!-- <a-show :content="inputValue"/> -->
+    <p>appName: {{ appName }}, appNameWithVersion : {{ appNameWithVersion }}</p>
+    <p>userName : {{ userName }}, firstLetter is : {{ firstLetter }}</p>
     <button @click="handleChangeAppName">修改appName</button>
     <p>{{ appVersion }}</p>
     <button @click="changeUserName">修改用户名</button>
+    <button @click="registerModule">动态注册模块</button>
+    <p v-for="(li, index) in todoList" :key="index">{{ li }}</p>
   </div>
 </template>
-
 <script>
-import ZInput from '_c/ZInput.vue'
-// import ZShow from '_c/ZShow.vue'
+import AInput from '_c/AInput.vue'
+// import AShow from '_c/AShow.vue'
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
-// import { createNamespacedHelpers } from 'vuex'
-// const { mapState } = createNamespacedHelpers('user')
 export default {
   name: 'store',
-  components: {
-    ZInput
-    // ZShow
-  },
-  data() {
+  data () {
     return {
       inputValue: ''
     }
   },
+  components: {
+    AInput
+    // AShow
+  },
   computed: {
+    // ...mapState({
+    //   appName: state => state.appName,
+    //   userName: state => state.user.userName
+    // })
     ...mapState({
       userName: state => state.user.userName,
-      appVersion: state => state.appVersion
+      appVersion: state => state.appVersion,
+      todoList: state => state.user.todo ? state.user.todo.todoList : []
     }),
-    ...mapGetters('user', ['firstLetter']),
-    inputValueLastLetter() {
-      return this.inputValue.substr(-1, 1)
+    stateValue: {
+      get () {
+        return this.$store.state.stateValue
+      },
+      set (val) {
+        this.SET_STATE_VALUE(val)
+      }
     },
-    ...mapActions(
-      ['updateAppName']
-    ),
+    ...mapGetters([
+      'appNameWithVersion',
+      'firstLetter'
+    ]),
+    appName () {
+      return this.$store.state.appName
+    },
     // appNameWithVersion () {
     //   return this.$store.getters.appNameWithVersion
     // },
-    // ...mapState({
-    //   appName: state => state.appName,
-    //   userName: state => state.users.userName
-    // })
-    // ...mapState([
-    //   'appName'
-    // ])
-    appName() {
-      return this.$store.state.appName
-    }
     // userName () {
-    //   return this.$store.state.users.userName
-    // }
+    //   return this.$store.state.user.userName
+    // },
+    inputValueLastLetter () {
+      return this.inputValue.substr(-1, 1)
+    }
   },
   methods: {
-    ...mapMutations(['SET_USER_NAME', 'SET_APP_NAME']),
-    handleInput(val) {
+    ...mapMutations([
+      'SET_USER_NAME',
+      'SET_APP_NAME',
+      'SET_STATE_VALUE'
+    ]),
+    ...mapActions([
+      'updateAppName'
+    ]),
+    handleInput (val) {
       this.inputValue = val
     },
-    handleChangeAppName() {
+    handleChangeAppName () {
       // this.$store.commit({
       //   type: 'SET_APP_NAME',
       //   appName: 'newAppName'
       // })
-      // 有了...mapMutations之后就不要上面这样操作了
-      // 直接按照下面的方法操作即可
-      this.SET_APP_NAME('newAppName')
+      // this.SET_APP_NAME({
+      //   appName: 'newAppName'
+      // })
       this.updateAppName()
-      this.$store.commit('SET_APP_VERSION')
+      // this.$store.commit('SET_APP_VERSION')
     },
-    changeUserName() {
+    changeUserName () {
+      // this.$store.state.user.userName = 'haha' 错误的方法
       this.SET_USER_NAME('vue-cource')
-      // this.$store.dispatch('SET_APP_NAME', {'123})
+      // this.$store.dispatch('updateAppName', '123')
+    },
+    registerModule () {
+      this.$store.registerModule(['user', 'todo'], {
+        state: {
+          todoList: [
+            '学习mutations',
+            '学习actions'
+          ]
+        }
+      })
+    },
+    handleStateValueChange (val) {
+      this.SET_STATE_VALUE(val)
     }
   }
 }
 </script>
-
-<style scoped lang="scss">
-</style>

@@ -1,10 +1,9 @@
 <template>
   <input @input="handleInput" :value="value"/>
 </template>
-
 <script>
 export default {
-  name: 'ZInput',
+  name: 'AInput',
   props: {
     value: {
       type: [String, Number],
@@ -16,15 +15,6 @@ export default {
       const value = event.target.value
       this.$emit('input', value)
     }
-  },
-  data () {
-    return {
-
-    }
   }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>

@@ -1,9 +1,8 @@
 <template>
-  <div class="container">
-    <p>ZShow:{{content}}</p>
+  <div>
+    <p>AShow: {{ content }}</p>
   </div>
 </template>
-
 <script>
 export default {
   props: {
@@ -11,18 +10,6 @@ export default {
       type: [String, Number],
       default: ''
     }
-  },
-  components: {
-
-  },
-  data () {
-    return {
-
-    }
   }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>

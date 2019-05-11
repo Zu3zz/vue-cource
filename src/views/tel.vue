@@ -1,9 +1,8 @@
 <template>
   <div class="tel">
-    <p>{{message}}</p>
+    <p>{{ message }}</p>
   </div>
 </template>
-
 <script>
 export default {
   data () {
@@ -13,16 +12,12 @@ export default {
   },
   mounted () {
     this.$bus.$on('on-click', mes => {
-      console.log('hello')
+      this.message = mes
     })
-  },
-  components: {
-
   }
 }
 </script>
-
-<style scoped>
+<style>
 .tel{
   border: 1px solid red;
 }
